@@ -1,6 +1,6 @@
 ﻿body {
     padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 200px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +21,35 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+
+#site-footer {
+    text-align: center;
+    padding-top: 10px;
+    background-color: black;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    border-radius: 50%;
+}
+.fa-facebook:hover {
+    opacity: 0.7;
+}
+
+#icons {
+    font-size: 15px;
+    color: cornflowerblue;
 }

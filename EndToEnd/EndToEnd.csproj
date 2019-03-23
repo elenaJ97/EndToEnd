@@ -311,6 +311,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\feit.jpg" />
+    <Content Include="Images\pozadina.png" />
     <Content Include="obj\Debug\EndToEnd.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\EndToEnd.dll" />
     <Content Include="obj\Debug\EndToEnd.pdb" />
