@@ -27,10 +27,22 @@
                     <li>@Html.ActionLink("Почетна", "Index", "Home")</li>
                     @if (User.IsInRole("Administrator"))
                     {
-                        <li>@Html.ActionLink("Администратор", "Index", "Admin")</li>
-                        <li>@Html.ActionLink("Студенти", "Index", "Students")</li>
-                        <li>@Html.ActionLink("Професори", "Index", "Professors")</li>
+                        <li>@Html.ActionLink("Administrator", "Index", "Admin")</li>
+                        <li>@Html.ActionLink("Students", "Index", "Students")</li>
+                        <li>@Html.ActionLink("Professors", "Index", "Professors")</li>
+                        <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
+                    }
+                    @if (User.IsInRole("Student"))
+                    {
+                        <li>@Html.ActionLink("Administrator", "Index", "Admin")</li>
+                        <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
+                        <li>@Html.ActionLink("Grades", "Index", "Grades")</li>
 
+                    }
+                    @if (User.IsInRole("Professor"))
+                    {
+                        <li>@Html.ActionLink("Administrator", "Index", "Admin")</li>
+                        <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
                     }
 
                 </ul>

@@ -22,5 +22,9 @@ namespace EndToEnd.Models
         public System.Data.Entity.DbSet<EndToEnd.Models.Student> Students { get; set; }
 
         public System.Data.Entity.DbSet<EndToEnd.Models.Professor> Professors { get; set; }
+
+        public System.Data.Entity.DbSet<EndToEnd.Models.Grade> Grades { get; set; }
+        public System.Data.Entity.DbSet<EndToEnd.Models.Course> Courses { get; set; }
+
     }
 }
