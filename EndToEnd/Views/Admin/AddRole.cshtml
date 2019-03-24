@@ -9,7 +9,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Create Role</h4>
+        <h4>Додадете нова улога</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -26,8 +26,8 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-                @Html.ActionLink("Back to List",
+                <input type="submit" value="Зачувај" class="btn btn-default" />
+                @Html.ActionLink("Назад",
                "ViewAllRoles",
                null,
                new { @class = "btn btn-default" })

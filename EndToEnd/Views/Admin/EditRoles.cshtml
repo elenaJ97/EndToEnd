@@ -10,11 +10,11 @@
     "",
     new { @class = "text-danger" })
     <div>
-        @Html.ActionLink("Back",
+        @Html.ActionLink("Назад",
        "EditUser",
        new { UserName = Model.UserName },
        new { @class = "btn btn-default" })
-        <input type="submit" value="Add Role" class="btn btn-default" />
+        <input type="submit" value="Додадете улога" class="btn btn-default" />
         @Html.DropDownList("AddRole")
     </div>
     <br />
@@ -22,7 +22,7 @@
     <table class="table">
         <tr>
             <th>
-                Existing Roles:
+                Тековни улоги:
             </th>
             <th></th>
         </tr>
@@ -39,7 +39,7 @@
                         item.RoleName == "Administrator") &&
                         item.RoleName != "No Roles Found")
                     {
-                        @Html.ActionLink("Delete", "DeleteRole",
+                        @Html.ActionLink("Избриши", "DeleteRole",
                        new { UserName = item.UserName, RoleName = item.RoleName },
                         new
                         {
