@@ -21,7 +21,7 @@ namespace EndToEnd.Controllers
         // GET: Students
         public ActionResult Index()
         {
-            var userID = "7e428ac3-2e63-4af7-aa72-7725442e5f6e";
+           // var userID = "7e428ac3-2e63-4af7-aa72-7725442e5f6e";
            /* var query = from Students in db.Students
 
                         join AspNetUserRoles in db1.Users on Students.ID

@@ -10,9 +10,25 @@
     <h4>ProfessorsCourse</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDProF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDProF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Br }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
