@@ -34,15 +34,16 @@
                     }
                     @if (User.IsInRole("Student"))
                     {
-                        <li>@Html.ActionLink("Администратор", "Index", "Admin")</li>
                         <li>@Html.ActionLink("Курсеви", "Index", "Courses")</li>
                         <li>@Html.ActionLink("Оцени", "Index", "Grades")</li>
 
+                     
                     }
                     @if (User.IsInRole("Professor"))
                     {
-                        <li>@Html.ActionLink("Администратор", "Index", "Admin")</li>
                         <li>@Html.ActionLink("Курсеви", "Index", "Courses")</li>
+                        <li>@Html.ActionLink("Tековни предмети", "Index", "ProfessorsCourses")</li>
+
                     }
 
                 </ul>

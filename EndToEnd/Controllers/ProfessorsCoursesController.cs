@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -11,122 +12,126 @@ using Microsoft.AspNet.Identity;
 
 namespace EndToEnd.Controllers
 {
-    public class GradesController : Controller
+    public class ProfessorsCoursesController : Controller
     {
         private EndToEndContext db = new EndToEndContext();
 
-        // GET: Grades
+        // GET: ProfessorsCourses
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
 
+
            
-            var query = from Grades in db.Grades
-                        join Courses in db.Courses on Grades.Code equals Courses.Code
-                        where Grades.StudentID == userId
-                        select new Course_Grade
+
+            var query = from PC in db.ProfessorsCourses
+                        join Courses in db.Courses on PC.Code equals Courses.Code
+                        where PC.IDProF == userId
+                        select new Course_Professor
                         {
                             Name = Courses.Name,
-                            Result = Grades.Result,
+                            Code = Courses.Code,
+                            
                         };
 
             return View(query.ToList());
         }
 
-        /* GET: Grades/Details/5
-        public ActionResult Details(int? id)
+        // GET: ProfessorsCourses/Details/5
+        public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Grade grade = db.Grades.Find(id);
-            if (grade == null)
+            ProfessorsCourse professorsCourse = db.ProfessorsCourses.Find(id);
+            if (professorsCourse == null)
             {
                 return HttpNotFound();
             }
-            return View(grade);
+            return View(professorsCourse);
         }
 
-        // GET: Grades/Create
+        // GET: ProfessorsCourses/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Grades/Create
+        // POST: ProfessorsCourses/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PrBr,StudentID,Result,Code")] Grade grade)
+        public ActionResult Create([Bind(Include = "IDProF,Code")] ProfessorsCourse professorsCourse)
         {
             if (ModelState.IsValid)
             {
-                db.Grades.Add(grade);
+                db.ProfessorsCourses.Add(professorsCourse);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(grade);
+            return View(professorsCourse);
         }
 
-        // GET: Grades/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: ProfessorsCourses/Edit/5
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Grade grade = db.Grades.Find(id);
-            if (grade == null)
+            ProfessorsCourse professorsCourse = db.ProfessorsCourses.Find(id);
+            if (professorsCourse == null)
             {
                 return HttpNotFound();
             }
-            return View(grade);
+            return View(professorsCourse);
         }
 
-        // POST: Grades/Edit/5
+        // POST: ProfessorsCourses/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PrBr,StudentID,Result,Code")] Grade grade)
+        public ActionResult Edit([Bind(Include = "IDProF,Code")] ProfessorsCourse professorsCourse)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(grade).State = EntityState.Modified;
+                db.Entry(professorsCourse).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(grade);
+            return View(professorsCourse);
         }
 
-        // GET: Grades/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: ProfessorsCourses/Delete/5
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Grade grade = db.Grades.Find(id);
-            if (grade == null)
+            ProfessorsCourse professorsCourse = db.ProfessorsCourses.Find(id);
+            if (professorsCourse == null)
             {
                 return HttpNotFound();
             }
-            return View(grade);
+            return View(professorsCourse);
         }
 
-        // POST: Grades/Delete/5
+        // POST: ProfessorsCourses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
-            Grade grade = db.Grades.Find(id);
-            db.Grades.Remove(grade);
+            ProfessorsCourse professorsCourse = db.ProfessorsCourses.Find(id);
+            db.ProfessorsCourses.Remove(professorsCourse);
+           
             db.SaveChanges();
             return RedirectToAction("Index");
-        }*/
+        }
 
         protected override void Dispose(bool disposing)
         {

@@ -8,16 +8,36 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using EndToEnd.Models;
+using Microsoft.AspNet.Identity;
 
 namespace EndToEnd.Controllers
 {
     public class StudentsController : Controller
     {
         private EndToEndContext db = new EndToEndContext();
+        private ApplicationDbContext db1 = new ApplicationDbContext();
+
 
         // GET: Students
-       public ActionResult Index()
+        public ActionResult Index()
         {
+            var userID = "7e428ac3-2e63-4af7-aa72-7725442e5f6e";
+           /* var query = from Students in db.Students
+
+                        join AspNetUserRoles in db1.Users on Students.ID
+                             equals AspNetUserRoles.Id
+
+                        where AspNetUserRoles.. == userID
+                        select new Student
+                        {
+                            UserName = Students.UserName,
+                            StudentIndex = Students.StudentIndex,
+                            Program =  Students.Program,
+                            GPA = Students.GPA,
+                            Email = Students.Email
+                        };
+
+            return View(query.ToList());*/
             return View(db.Students.ToList());
 
         }
