@@ -26,20 +26,9 @@ textarea {
 
 #site-footer {
     text-align: center;
+    color:black;
 }
 
-
-.fa-facebook {
-    background: #3B5998;
-    color: white;
-    padding: 10px;
-    font-size: 20px;
-    width: 40px;
-    height: 40px;
-    text-decoration: none;
-    border-radius: 50%;
-    text-align: center;
-}
 .fa-facebook:hover {
     opacity: 0.7;
 }
