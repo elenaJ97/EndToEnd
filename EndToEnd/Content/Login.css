@@ -1,0 +1,47 @@
+﻿
+
+/* Full-width inputs */
+.form-control{ width: 100%;
+margin-top: 40%;
+margin-left: 60%;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+box-sizing: border-box;
+}
+
+.text-danger {
+    width: 100%;
+    margin-top: 1400px;
+    margin-left: 1400px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+/* Set a style for all buttons */
+button {
+    background-color: #337ab7;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+    /* Add a hover effect for buttons */
+    button:hover {
+        opacity: 0.8;
+    }
+
+
+
+
+/* Add padding to containers */
+.avatar {
+    padding-top: 10%;
+    width: 125px; /* Full width */
+    height: 125px;
+}
+
