@@ -338,9 +338,7 @@ C:\Users\Elena\Desktop\FEIT\EndToEnd\EndToEnd\obj\Debug\EndToEnd.csproj.CoreComp
 C:\Users\Elena\Desktop\FEIT\EndToEnd\EndToEnd\obj\Debug\EndToEnd.csproj.CopyComplete
 C:\Users\Elena\Desktop\FEIT\EndToEnd\EndToEnd\obj\Debug\EndToEnd.dll
 C:\Users\Elena\Desktop\FEIT\EndToEnd\EndToEnd\obj\Debug\EndToEnd.pdb
-
 C:\Users\Asus\Desktop\ITLabs\EndToEnd\EndToEnd\bin\System.Windows.Forms.Ribbon35.dll
-
 C:\Users\IVANOVSKA\OneDrive\Documents\GitHub\EndToEnd\EndToEnd\bin\EndToEnd.dll.config
 C:\Users\IVANOVSKA\OneDrive\Documents\GitHub\EndToEnd\EndToEnd\bin\EndToEnd.dll
 C:\Users\IVANOVSKA\OneDrive\Documents\GitHub\EndToEnd\EndToEnd\bin\EndToEnd.pdb
@@ -426,3 +424,4 @@ C:\Users\IVANOVSKA\OneDrive\Documents\GitHub\EndToEnd\EndToEnd\obj\Debug\EndToEn
 C:\Users\IVANOVSKA\OneDrive\Documents\GitHub\EndToEnd\EndToEnd\obj\Debug\EndToEnd.csproj.CopyComplete
 C:\Users\IVANOVSKA\OneDrive\Documents\GitHub\EndToEnd\EndToEnd\obj\Debug\EndToEnd.dll
 C:\Users\IVANOVSKA\OneDrive\Documents\GitHub\EndToEnd\EndToEnd\obj\Debug\EndToEnd.pdb
+C:\Users\IVANOVSKA\OneDrive\Documents\GitHub\EndToEnd\EndToEnd\bin\System.Windows.Forms.Ribbon35.dll

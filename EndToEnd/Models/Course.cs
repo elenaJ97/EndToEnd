@@ -16,7 +16,7 @@ namespace EndToEnd.Models
         [Display(Name = "Код")]
         public int Code { get; set; }
 
-        [Required(ErrorMessage = "Може да внесете број од 1 до 8")]
+        [Required(ErrorMessage = "Внесете број од 1 до 8")]
         [Range(1, 8, ErrorMessage = "Може да внесете број од 1 до 8")]
         [Display(Name = "Семестар")]
         public int Semester { get; set; }
@@ -25,7 +25,7 @@ namespace EndToEnd.Models
         [Display(Name = "Фонд на часови")]
         public string Fond { get; set; }
 
-        [Required(ErrorMessage = "Може да внесете број од 3 до 10")]
+        [Required(ErrorMessage = "Внесете број од 3 до 10")]
         [Range(1, 8, ErrorMessage = "Може да внесете број од 3 до 10")]
         [Display(Name = "Кредити")]
         public int Credits { get; set; }

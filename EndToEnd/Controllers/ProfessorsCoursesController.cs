@@ -27,9 +27,6 @@ namespace EndToEnd.Controllers
                         {
                             Name = Courses.Name,
                             Code = Courses.Code,
-                            Br = PC.Br
-
-                        };
                             Br = PC.Br,
 
                         };
