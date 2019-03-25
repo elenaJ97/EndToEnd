@@ -9,6 +9,9 @@ namespace EndToEnd.Models
 {
     public class ProfessorsCourse
     {
+
+        
+        
         public string IDProF { get; set; }
         public int Code { get; set; }
         [Key]

@@ -144,6 +144,7 @@ namespace EndToEnd.Controllers
             if (User.IsInRole("Student"))
             {
                 using (SqlConnection con = new SqlConnection("Server=ELENA;Database=Data1;Trusted_Connection=true;"))
+
                 {
                     con.Open();
                     try
@@ -168,6 +169,7 @@ namespace EndToEnd.Controllers
             else if (User.IsInRole("Professor"))
             {
                 using (SqlConnection con = new SqlConnection("Server=ELENA;Database=Data1;Trusted_Connection=true;"))
+
                 {
                     con.Open();
                     try

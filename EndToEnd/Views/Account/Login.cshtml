@@ -25,6 +25,10 @@
 <div class="row" id="rowCentered">
     <div class="col-md-5 center-block" id="colCentered">
         <section>
+
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()

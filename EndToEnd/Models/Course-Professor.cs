@@ -10,6 +10,7 @@ namespace EndToEnd.Models
         public string Name { set; get; }
         public int Code { set; get; }
         public int Br { set; get; }
+        public int Br { get; set; }
         
     }
 }

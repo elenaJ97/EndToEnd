@@ -19,6 +19,7 @@ namespace EndToEnd.Controllers
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
+
             var query = from PC in db.ProfessorsCourses
                         join Courses in db.Courses on PC.Code equals Courses.Code
                         where PC.IDProF == userId
@@ -29,7 +30,9 @@ namespace EndToEnd.Controllers
                             Br = PC.Br
 
                         };
+                            Br = PC.Br,
 
+                        };
             return View(query.ToList());
         }
 
