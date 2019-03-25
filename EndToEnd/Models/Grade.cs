@@ -10,8 +10,11 @@ namespace EndToEnd.Models
     {
         public string StudentID { get; set; }
 
+        [Display(Name = "Оцена")]
         public decimal Result { get; set; }
+
         public int Code { get; set; }
+
         [Key]
         public int PrBr { get; set; }
 

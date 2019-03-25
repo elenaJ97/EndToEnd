@@ -8,7 +8,10 @@ namespace EndToEnd.Models
 {
     public class Professor
     {
+        [Display(Name = "Име")]
         public string Name { get; set; }
+
+        [Display(Name = "Презиме")]
         public string Surname { get; set; }
 
         [System.ComponentModel.DataAnnotations.Key]
