@@ -118,7 +118,7 @@ namespace EndToEnd.Controllers
         }
 
         // POST: ProfessorsCourses/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Избриши")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
