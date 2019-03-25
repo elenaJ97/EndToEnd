@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using EndToEnd.Models;
 using Microsoft.AspNet.Identity;
+using System.Windows.Forms;
+
 
 namespace EndToEnd.Controllers
 {
@@ -71,7 +72,16 @@ namespace EndToEnd.Controllers
             if (ModelState.IsValid)
             {
                 db.Courses.Add(course);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception e1)
+                {
+
+                    MessageBox.Show("Предметот е веќе внесен");
+                }
+
                 return RedirectToAction("Index");
             }
 

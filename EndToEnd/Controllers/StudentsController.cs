@@ -19,28 +19,42 @@ namespace EndToEnd.Controllers
 
 
         // GET: Students
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-           // var userID = "7e428ac3-2e63-4af7-aa72-7725442e5f6e";
-           /* var query = from Students in db.Students
+            // var userID = "7e428ac3-2e63-4af7-aa72-7725442e5f6e";
+            /* var query = from Students in db.Students
 
-                        join AspNetUserRoles in db1.Users on Students.ID
-                             equals AspNetUserRoles.Id
+                         join AspNetUserRoles in db1.Users on Students.ID
+                              equals AspNetUserRoles.Id
 
-                        where AspNetUserRoles.. == userID
-                        select new Student
-                        {
-                            UserName = Students.UserName,
-                            StudentIndex = Students.StudentIndex,
-                            Program =  Students.Program,
-                            GPA = Students.GPA,
-                            Email = Students.Email
-                        };
+                         where AspNetUserRoles.. == userID
+                         select new Student
+                         {
+                             UserName = Students.UserName,
+                             StudentIndex = Students.StudentIndex,
+                             Program =  Students.Program,
+                             GPA = Students.GPA,
+                             Email = Students.Email
+                         };
 
-            return View(query.ToList());*/
+             return View(query.ToList());*/
+            if(searchString!= "") {
+                var students = from m in db.Students
+                               select m;
+
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    students = students.Where(s => s.StudentIndex.Contains(searchString));
+                }
+
+                return View(students);
+            }
+
             return View(db.Students.ToList());
 
+
         }
+        
 
         // GET: Students/Details/5
         public ActionResult Details(string id)
