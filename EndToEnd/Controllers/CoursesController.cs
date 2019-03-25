@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using EndToEnd.Models;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using EndToEnd.Models;
-using Microsoft.AspNet.Identity;
 
 namespace EndToEnd.Controllers
 {
@@ -68,6 +66,7 @@ namespace EndToEnd.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Code,Name,Semester,Fond,Credits")] Course course)
         {
+            
             if (ModelState.IsValid)
             {
                 db.Courses.Add(course);
@@ -108,7 +107,7 @@ namespace EndToEnd.Controllers
             }
             return View(course);
         }
-
+       
         // GET: Courses/Delete/5
         public ActionResult Delete(int? id)
         {
