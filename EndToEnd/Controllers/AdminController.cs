@@ -158,7 +158,7 @@ namespace EndToEnd.Controllers
                         UserManager.AddToRole(objNewAdminUser.Id, strNewRole);
                         if(strNewRole == "Student")
                         {
-                            using (SqlConnection con = new SqlConnection("Server=ELENA;Database=Data1;Trusted_Connection=true;"))
+                            using (SqlConnection con = new SqlConnection("Server=DESKTOP-2ALKA6L;Database=Data1;Trusted_Connection=true;"))
 
                             {
                                 con.Open();
@@ -185,7 +185,7 @@ namespace EndToEnd.Controllers
                         }
                        else if (strNewRole == "Professor")
                         {
-                            using (SqlConnection con = new SqlConnection("Server=ELENA;Database=Data1;Trusted_Connection=true;"))
+                            using (SqlConnection con = new SqlConnection("Server=DESKTOP-2ALKA6L;Database=Data1;Trusted_Connection=true;"))
 
                             {
                                 con.Open();
