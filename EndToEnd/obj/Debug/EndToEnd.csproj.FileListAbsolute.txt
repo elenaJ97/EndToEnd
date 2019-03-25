@@ -338,3 +338,5 @@ C:\Users\Elena\Desktop\FEIT\EndToEnd\EndToEnd\obj\Debug\EndToEnd.csproj.CoreComp
 C:\Users\Elena\Desktop\FEIT\EndToEnd\EndToEnd\obj\Debug\EndToEnd.csproj.CopyComplete
 C:\Users\Elena\Desktop\FEIT\EndToEnd\EndToEnd\obj\Debug\EndToEnd.dll
 C:\Users\Elena\Desktop\FEIT\EndToEnd\EndToEnd\obj\Debug\EndToEnd.pdb
+
+C:\Users\Asus\Desktop\ITLabs\EndToEnd\EndToEnd\bin\System.Windows.Forms.Ribbon35.dll

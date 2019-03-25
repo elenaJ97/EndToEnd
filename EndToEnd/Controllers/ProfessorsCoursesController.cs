@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -20,10 +19,6 @@ namespace EndToEnd.Controllers
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
-
-
-           
-
             var query = from PC in db.ProfessorsCourses
                         join Courses in db.Courses on PC.Code equals Courses.Code
                         where PC.IDProF == userId
@@ -31,14 +26,15 @@ namespace EndToEnd.Controllers
                         {
                             Name = Courses.Name,
                             Code = Courses.Code,
-                            
+                            Br = PC.Br
+
                         };
 
             return View(query.ToList());
         }
 
         // GET: ProfessorsCourses/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -63,7 +59,7 @@ namespace EndToEnd.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDProF,Code")] ProfessorsCourse professorsCourse)
+        public ActionResult Create([Bind(Include = "Br,IDProF,Code")] ProfessorsCourse professorsCourse)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +72,7 @@ namespace EndToEnd.Controllers
         }
 
         // GET: ProfessorsCourses/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -95,7 +91,7 @@ namespace EndToEnd.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDProF,Code")] ProfessorsCourse professorsCourse)
+        public ActionResult Edit([Bind(Include = "Br,IDProF,Code")] ProfessorsCourse professorsCourse)
         {
             if (ModelState.IsValid)
             {
@@ -107,7 +103,7 @@ namespace EndToEnd.Controllers
         }
 
         // GET: ProfessorsCourses/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -124,11 +120,10 @@ namespace EndToEnd.Controllers
         // POST: ProfessorsCourses/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             ProfessorsCourse professorsCourse = db.ProfessorsCourses.Find(id);
             db.ProfessorsCourses.Remove(professorsCourse);
-           
             db.SaveChanges();
             return RedirectToAction("Index");
         }

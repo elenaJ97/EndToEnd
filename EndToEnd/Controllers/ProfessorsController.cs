@@ -15,8 +15,20 @@ namespace EndToEnd.Controllers
         private EndToEndContext db = new EndToEndContext();
 
         // GET: Professors
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
+            if (searchString != "")
+            {
+                var professors = from m in db.Professors
+                               select m;
+
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    professors = professors.Where(s => s.Surname.Contains(searchString));
+                }
+
+                return View(professors);
+            }
             return View(db.Professors.ToList());
         }
 
