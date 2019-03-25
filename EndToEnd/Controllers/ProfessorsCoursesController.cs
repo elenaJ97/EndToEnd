@@ -22,7 +22,7 @@ namespace EndToEnd.Controllers
             var userId = User.Identity.GetUserId();
 
 
-           
+
 
             var query = from PC in db.ProfessorsCourses
                         join Courses in db.Courses on PC.Code equals Courses.Code
@@ -31,9 +31,9 @@ namespace EndToEnd.Controllers
                         {
                             Name = Courses.Name,
                             Code = Courses.Code,
-                            
-                        };
+                            Br = PC.Br,
 
+                        };
             return View(query.ToList());
         }
 
