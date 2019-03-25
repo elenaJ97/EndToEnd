@@ -31,6 +31,7 @@ namespace EndToEnd.Models
         [Required(ErrorMessage = "Choose Role!")]
         public string RoleName { get; set; }
     }
+  
     public class UserRoleDTO
     {
         [Key]
