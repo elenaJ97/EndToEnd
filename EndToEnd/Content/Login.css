@@ -1,47 +1,44 @@
 ﻿
 
-/* Full-width inputs */
-.form-control{ width: 100%;
-margin-top: 40%;
-margin-left: 60%;
-margin: 8px 0;
-display: inline-block;
-border: 1px solid #ccc;
-box-sizing: border-box;
+#colCentered
+{
+    display: inline-block;
+    float: none;
+    text-align: left;
+    margin:0 auto
 }
 
-.text-danger {
-    width: 100%;
-    margin-top: 1400px;
-    margin-left: 1400px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+#rowCentered
+{
+    text-align: center;
 }
-/* Set a style for all buttons */
-button {
+.btn {
     background-color: #337ab7;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 80%;
 }
 
     /* Add a hover effect for buttons */
-    button:hover {
+    btn:hover {
         opacity: 0.8;
     }
 
 
-
-
-/* Add padding to containers */
-.avatar {
+.slikaAvatar {
     padding-top: 10%;
-    width: 125px; /* Full width */
+    width: 125px; 
     height: 125px;
 }
 
+
+
+#slikicka {
+    text-align: center;
+    float: none;
+    margin: 0 auto;
+ 
+}
