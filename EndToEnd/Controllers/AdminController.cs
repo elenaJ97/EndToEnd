@@ -645,7 +645,7 @@ namespace EndToEnd.Controllers
             SelectRoleListItems.Add(
                 new SelectListItem
                 {
-                    Text = "Select",
+                    Text = "Одбери",
                     Value = "0"
                 });
 
