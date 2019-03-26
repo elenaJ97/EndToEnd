@@ -3,14 +3,14 @@
 @{
     ViewBag.Title = "Index";
 }
-<h2>Index</h2>
+<h3>Предмети</h3>
 
 
 
 <p>
     @if (User.IsInRole("Administrator"))
     {
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Додади нов предмет", "Create")
     }
 </p>
 <table class="table">
@@ -47,8 +47,17 @@
             </td>
             <td>
                 @Html.ActionLink("Детали", "Details", new { id = item.Code })
+                @if (User.IsInRole("Professor"))
+                {
+                    <span>|</span>
+                    @Html.ActionLink("Додади", "Delete", new { id = item.Code })
+                }
+                @if (User.IsInRole("Student"))
+                {
+                    <span>|</span>
+                    @Html.ActionLink("Додади", "Delete", new { id = item.Code })
+                }
 
-                @Html.ActionLink("Додади", "Delete", new { id = item.Code })
             </td>
         </tr>
     }

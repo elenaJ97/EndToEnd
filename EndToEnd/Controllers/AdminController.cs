@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using EndToEnd.Models;
 using PagedList;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 #endregion Includes
 
@@ -160,6 +161,7 @@ namespace EndToEnd.Controllers
                         {
                             using (SqlConnection con = new SqlConnection("Server=DESKTOP-2ALKA6L; Database=Data1;Trusted_Connection=true;"))
 
+
                             {
                                 con.Open();
                                 try
@@ -169,8 +171,8 @@ namespace EndToEnd.Controllers
                                     {
                                         command.Parameters.Add(new SqlParameter("ID", objNewAdminUser.Id));
                                         command.Parameters.Add(new SqlParameter("UserName", ""));
-                                        command.Parameters.Add(new SqlParameter("StudentIndex", "xxx-xxxx"));
-                                        command.Parameters.Add(new SqlParameter("GPA", ""));
+                                        command.Parameters.Add(new SqlParameter("StudentIndex", ""));
+                                        command.Parameters.Add(new SqlParameter("GPA", 5.00));
                                         command.Parameters.Add(new SqlParameter("Program", ""));
                                         command.Parameters.Add(new SqlParameter("Email", objNewAdminUser.Email));
 
@@ -179,7 +181,7 @@ namespace EndToEnd.Controllers
                                 }
                                 catch
                                 {
-                                    Console.WriteLine("Count not insert.");
+                                    MessageBox.Show("Postoi indeksot");
                                 }
                             }
                         }
@@ -205,7 +207,7 @@ namespace EndToEnd.Controllers
                                 }
                                 catch
                                 {
-                                    Console.WriteLine("Count not insert.");
+                                        Console.WriteLine("Count not insert.");
                                 }
                             }
                         }
@@ -645,7 +647,7 @@ namespace EndToEnd.Controllers
             SelectRoleListItems.Add(
                 new SelectListItem
                 {
-                    Text = "Select",
+                    Text = "Одбери",
                     Value = "0"
                 });
 
