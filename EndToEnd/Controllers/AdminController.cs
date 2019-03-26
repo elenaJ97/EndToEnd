@@ -170,7 +170,7 @@ namespace EndToEnd.Controllers
                                         command.Parameters.Add(new SqlParameter("ID", objNewAdminUser.Id));
                                         command.Parameters.Add(new SqlParameter("UserName", ""));
                                         command.Parameters.Add(new SqlParameter("StudentIndex", "xxx-xxxx"));
-                                        command.Parameters.Add(new SqlParameter("GPA", ""));
+                                        command.Parameters.Add(new SqlParameter("GPA", 5.00));
                                         command.Parameters.Add(new SqlParameter("Program", ""));
                                         command.Parameters.Add(new SqlParameter("Email", objNewAdminUser.Email));
 
@@ -645,7 +645,7 @@ namespace EndToEnd.Controllers
             SelectRoleListItems.Add(
                 new SelectListItem
                 {
-                    Text = "Select",
+                    Text = "Одбери",
                     Value = "0"
                 });
 
