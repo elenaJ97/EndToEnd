@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using EndToEnd.Models;
 using PagedList;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 #endregion Includes
 
@@ -169,7 +170,7 @@ namespace EndToEnd.Controllers
                                     {
                                         command.Parameters.Add(new SqlParameter("ID", objNewAdminUser.Id));
                                         command.Parameters.Add(new SqlParameter("UserName", ""));
-                                        command.Parameters.Add(new SqlParameter("StudentIndex", "xxx-xxxx"));
+                                        command.Parameters.Add(new SqlParameter("StudentIndex", ""));
                                         command.Parameters.Add(new SqlParameter("GPA", 5.00));
                                         command.Parameters.Add(new SqlParameter("Program", ""));
                                         command.Parameters.Add(new SqlParameter("Email", objNewAdminUser.Email));
@@ -179,7 +180,7 @@ namespace EndToEnd.Controllers
                                 }
                                 catch
                                 {
-                                    Console.WriteLine("Count not insert.");
+                                    MessageBox.Show("Postoi indeksot");
                                 }
                             }
                         }
@@ -205,7 +206,7 @@ namespace EndToEnd.Controllers
                                 }
                                 catch
                                 {
-                                    Console.WriteLine("Count not insert.");
+                                        Console.WriteLine("Count not insert.");
                                 }
                             }
                         }
