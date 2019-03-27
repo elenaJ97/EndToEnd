@@ -16,8 +16,6 @@
 </head>
 <body style="background-color:#F1F1F3;">
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#083755; font-size: 16px; font-weight:500;">
-        <div class="container"  >
-            <div class="navbar-header" >
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -27,7 +25,6 @@
                 </button>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav" >
                 <ul class="nav navbar-nav">
                     <li> @Html.ActionLink("Почетна", "Index", "Home")</li>
                     @if (User.IsInRole("Administrator"))
@@ -55,8 +52,8 @@
             </div>
         </div>
     </div>
-    <div class="container body-content" >
-        @RenderBody() 
+    <div class="container body-content">
+        @RenderBody()
         <hr />
     </div>
     <div class="footer" id="site-footer">

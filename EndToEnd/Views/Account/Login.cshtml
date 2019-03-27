@@ -15,75 +15,81 @@
 </head>
 
 <br />
-<div class="row" id="rowCentered">
-    <div class="col-md-3 center-block" id="slikicka">
-        <img src="~/Images/student.jpg" class="slikaAvatar" style="border-radius:50%;">
-    </div>
-</div>
-
-<br /> 
-
-<div class="row" id="rowCentered">
-    <div class="col" id="colCentered">
-        <div class="form-group col-md-offset-4 col-md-10 center-block" id="colCentered" style="position:center;">
-            <div class="row-md-2 center-block" style="position:center; text-align:center;">
-                @Html.LabelFor(m => m.Email, "Email", new { @class = "col-md-4 control-label" })
+<section id="loginForm">
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <div class="row" id="rowCentered">
+            <div class="col-md-3 center-block" id="slikicka">
+                <img src="~/Images/student.jpg" class="slikaAvatar" style="border-radius:50%;">
             </div>
         </div>
-    </div>
-</div>
- 
-<div class="row" id="rowCentered">
-    <div class="col" id="colCentered">
-        <div class="row-md-3 center-block" style="position:center;">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control col-md-5" })
-            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-        </div>
-    </div>
-</div>
-<br />
 
-<div class="row" id="rowCentered">
-    <div class="col" id="colCentered">
-        <div class="row-md-4 center-block" style="position:center; text-align:center;">
-            @Html.LabelFor(m => m.Password, "Лозинка", new { @class = "col-md-4 control-label" })
-         </div>
-    </div>
-</div>
-
-<div class="row" id="rowCentered">
-    <div class="col" id="colCentered">
-        <div class="row-md-5 center-block" style="position:center;">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control col-md-5" })
-            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-        </div>
-    </div>
-</div>
-
-<div class="row" id="rowCentered">
-    <div class="col" id="colCentered">
-        <div class="form-group">
-                <div class="checkbox">
-                    @Html.CheckBoxFor(m => m.RememberMe)
-                    @Html.LabelFor(m => m.RememberMe, "Запомни ме")
+        <br />
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row" id="rowCentered">
+            <div class="col" id="colCentered">
+                <div class="form-group col-md-offset-4 col-md-10 center-block" id="colCentered" style="position:center;">
+                    <div class="row-md-2 center-block" style="position:center; text-align:center;">
+                        @Html.LabelFor(m => m.Email, "Email", new { @class = "col-md-4 control-label" })
+                    </div>
                 </div>
+            </div>
         </div>
-    </div>
-</div>
 
-<div class="row" id="rowCentered">
-    <div class="col" id="colCentered">
-        <div class="form-group">
-                <input type="submit" value="Најава" class="btn btn-primary" style="width:200px; position:center;" />
+        <div class="row" id="rowCentered">
+            <div class="col" id="colCentered">
+                <div class="row-md-3 center-block" style="position:center;">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control col-md-5" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+        <br />
 
-    @* Enable this once you have account confirmation enabled for password reset functionality
-        <p>
-            @Html.ActionLink("Forgot your password?", "ForgotPassword")
-        </p>*@
+        <div class="row" id="rowCentered">
+            <div class="col" id="colCentered">
+                <div class="row-md-4 center-block" style="position:center; text-align:center;">
+                    @Html.LabelFor(m => m.Password, "Лозинка", new { @class = "col-md-4 control-label" })
+                </div>
+            </div>
+        </div>
 
+        <div class="row" id="rowCentered">
+            <div class="col" id="colCentered">
+                <div class="row-md-5 center-block" style="position:center;">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control col-md-5" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="rowCentered">
+            <div class="col" id="colCentered">
+                <div class="form-group">
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe, "Запомни ме")
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="rowCentered">
+            <div class="col" id="colCentered">
+                <div class="form-group">
+                    <input type="submit" value="Најава" class="btn btn-primary" style="width:200px; position:center;" />
+                </div>
+            </div>
+        </div>
+
+        @* Enable this once you have account confirmation enabled for password reset functionality
+            <p>
+                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+            </p>*@
+
+    }
+    </section>
 
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
