@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Details";
 }
-
+<br />
 <h3>Детали за студентот</h3>
 
 <div>
@@ -52,7 +52,7 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Промена", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Назад", "Index")
-</p>
+<div>
+    @Html.ActionLink("Промена", "Edit", new { id = Model.ID }, new { @class = "btn btn-primary" }) 
+    @Html.ActionLink("Назад", "Index", null, new { @class = "btn btn-primary" })
+</div>

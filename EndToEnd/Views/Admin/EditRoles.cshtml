@@ -6,6 +6,7 @@
 {
     @Html.AntiForgeryToken()
     <br />
+    <br />
     @Html.ValidationSummary(true,
     "",
     new { @class = "text-danger" })
@@ -13,8 +14,8 @@
         @Html.ActionLink("Назад",
        "EditUser",
        new { UserName = Model.UserName },
-       new { @class = "btn btn-default" })
-        <input type="submit" value="Додадете улога" class="btn btn-default" />
+       new { @class = "btn btn-primary" })
+        <input type="submit" value="Додадете улога" class = "btn btn-primary" />
         @Html.DropDownList("AddRole")
     </div>
     <br />

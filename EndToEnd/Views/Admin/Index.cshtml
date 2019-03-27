@@ -6,9 +6,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br />
+<br />
 <p>
-    @Html.ActionLink("Додадете нов корисник", "Create", null, new { @class = "btn btn-default" })
-    @Html.ActionLink("Уредете ги улогите", "ViewAllRoles", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Додадете нов корисник", "Create", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Уредете ги улогите", "ViewAllRoles", null, new { @class = "btn btn-primary" })
 </p>
 <br />
 @using (Html.BeginForm("Index", "Admin", FormMethod.Get))
@@ -17,7 +18,7 @@
     <div class="form-group">
        Пребарување:&nbsp; @Html.TextBox("searchStringUserNameOrEmail", ViewBag.CurrentFilter as string)
 
-        <input type="submit" value="Пребарајте" />
+        <input type="submit" value="Пребарај" class=" btn btn-primary" />
     </div>
 }
 <br />

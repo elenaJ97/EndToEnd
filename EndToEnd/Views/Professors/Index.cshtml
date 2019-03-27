@@ -11,10 +11,11 @@
     @using (Html.BeginForm())
     {
     <p>
-        Презиме на професор: @Html.TextBox("SearchString")  <input type="submit" value="Пребарај" />
+        Презиме на професор: @Html.TextBox("SearchString")  <input type="submit" value="Пребарај" class=" btn btn-primary" />
     </p>
 }
     </p>
+<br />
     <table class="table">
         <tr>
             <th>
@@ -42,7 +43,7 @@
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
-                    @Html.ActionLink("Промени", "Edit", new { id = item.IDProF }) |
+                    @Html.ActionLink("Уреди", "Edit", new { id = item.IDProF }) |
                     @Html.ActionLink("Детали", "Details", new { id = item.IDProF }) |
                     @Html.ActionLink("Избриши", "Delete", new { id = item.IDProF })
                 </td>

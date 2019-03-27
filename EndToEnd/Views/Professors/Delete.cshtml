@@ -5,10 +5,10 @@
 }
 
 
-
+<br />
 <h3>Дали сте сигурни дека сакате да избришете?</h3>
 <div>
-    <h4>Професор</h4>
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -41,8 +41,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Избриши" class="btn btn-default" /> |
-            @Html.ActionLink("Назад", "Index")
+            <input type="submit" value="Избриши" class="btn btn-primary" /> 
+            @Html.ActionLink("Назад", "Index", null, new { @class = "btn btn-primary" })
         </div>
     }
 </div>
