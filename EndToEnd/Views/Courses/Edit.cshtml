@@ -4,12 +4,14 @@
     ViewBag.Title = "Edit";
 }
 
+<br />
 <h3>Промени детали за предметот</h3>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
+    <br />
     <div class="form-horizontal">
     
         <hr />
@@ -50,12 +52,10 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Зачувај" class="btn btn-default" />
+                <input type="submit" value="Зачувај" class="btn btn-primary" />
+                @Html.ActionLink("Назад", "Index", null, new { @class = "btn btn-primary" })
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Назад", "Index")
-</div>

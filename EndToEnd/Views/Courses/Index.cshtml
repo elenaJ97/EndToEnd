@@ -3,28 +3,27 @@
 @{
     ViewBag.Title = "Index";
 }
-<h3>Предмети</h3>
 
-
-
+<br />
+<br />
 <p>
     @if (User.IsInRole("Administrator"))
     {
-        @Html.ActionLink("Додади нов предмет", "Create")
+        @Html.ActionLink("Додади нов предмет", "Create", null, new { @class = "btn btn-primary" })
     }
 </p>
-<table class="table">
-    <tr>
-        <th>
+<table class="table" style="outline-style: solid; outline-width: 2px;">
+    <tr style="background-color:#083755; outline-style: solid; outline-width: 2px;">
+        <th style="color:gray">
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th>
+        <th style="color:gray">
             @Html.DisplayNameFor(model => model.Semester)
         </th>
-        <th>
+        <th style="color:gray">
             @Html.DisplayNameFor(model => model.Fond)
         </th>
-        <th>
+        <th style="color:gray">
             @Html.DisplayNameFor(model => model.Credits)
         </th>
         <th></th>
