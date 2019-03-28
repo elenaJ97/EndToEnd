@@ -16,35 +16,35 @@
 }
     </p>
 <br />
-    <table class="table">
+<table class="table" style="outline-style: solid; outline-width: 2px;">
+    <tr style="background-color:#083755; outline-style: solid; outline-width: 2px;">
+        <th style="color:gray">
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th style="color:gray">
+            @Html.DisplayNameFor(model => model.StudentIndex)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StudentIndex)
-            </th>
 
-            <th></th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentIndex)
+            </td>
+
+            <td>
+                @Html.ActionLink("Уреди", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Детали", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Избриши", "Delete", new { id = item.ID })
+            </td>
         </tr>
+    }
 
-        @foreach (var item in Model)
-        {
-            <tr>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StudentIndex)
-                </td>
-
-                <td>
-                    @Html.ActionLink("Уреди", "Edit", new { id = item.ID }) |
-                    @Html.ActionLink("Детали", "Details", new { id = item.ID }) |
-                    @Html.ActionLink("Избриши", "Delete", new { id = item.ID })
-                </td>
-            </tr>
-        }
-
-    </table>
+</table>
