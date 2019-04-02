@@ -9,19 +9,28 @@
 
 
 
+<br />
+<br />
 <p>
     @if (User.IsInRole("Administrator"))
     {
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Додади нов предмет", "Create", null, new { @class = "btn btn-primary" })
     }
 </p>
-<table class="table">
-    <tr>
-        <th>
+<table class="table" style="outline-style: solid; outline-width: 2px;">
+    <tr style="background-color:#083755; outline-style: solid; outline-width: 2px;">
+        <th style="color:gray">
             @Html.DisplayNameFor(model => model.Name)
         </th>
 
         <th>
+        <th style="color:gray">
+            @Html.DisplayNameFor(model => model.Semester)
+        </th>
+        <th style="color:gray">
+            @Html.DisplayNameFor(model => model.Fond)
+        </th>
+        <th style="color:gray">
             @Html.DisplayNameFor(model => model.Credits)
         </th>
         <th></th>
@@ -38,9 +47,18 @@
                 @Html.DisplayFor(modelItem => item.Credits)
             </td>
             <td>
-                @Html.ActionLink("Детали", "Details", new { id = item.Code }) |
+                @Html.ActionLink("Детали", "Details", new { id = item.Code })
+                @if (User.IsInRole("Professor"))
+                {
+                    <span>|</span>
+                    @Html.ActionLink("Додади", "Delete", new { id = item.Code })
+                }
+                @if (User.IsInRole("Student"))
+                {
+                    <span>|</span>
+                    @Html.ActionLink("Додади", "Delete", new { id = item.Code })
+                }
 
-                @Html.ActionLink("Додади", "Delete", new { id = item.Code })
             </td>
         </tr>
     }

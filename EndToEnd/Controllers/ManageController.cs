@@ -59,12 +59,12 @@ namespace EndToEnd.Controllers
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
+                message == ManageMessageId.ChangePasswordSuccess ? "Вашата лозинка е променета."
+                : message == ManageMessageId.SetPasswordSuccess ? "Креирана е лозинка."
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
-                : message == ManageMessageId.Error ? "An error has occurred."
-                : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
-                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                : message == ManageMessageId.Error ? "Настана грешка."
+                : message == ManageMessageId.AddPhoneSuccess ? "Додаден е телефонски број."
+                : message == ManageMessageId.RemovePhoneSuccess ? "Телефонскиот број е избришан."
                 : "";
 
             var userId = User.Identity.GetUserId();

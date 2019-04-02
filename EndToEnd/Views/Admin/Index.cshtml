@@ -6,9 +6,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br />
+<br />
 <p>
-    @Html.ActionLink("Додадете нов корисник", "Create", null, new { @class = "btn btn-default" })
-    @Html.ActionLink("Уредете ги улогите", "ViewAllRoles", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Додадете нов корисник", "Create", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Уредете ги улогите", "ViewAllRoles", null, new { @class = "btn btn-primary" })
 </p>
 <br />
 @using (Html.BeginForm("Index", "Admin", FormMethod.Get))
@@ -17,14 +18,14 @@
     <div class="form-group">
        Пребарување:&nbsp; @Html.TextBox("searchStringUserNameOrEmail", ViewBag.CurrentFilter as string)
 
-        <input type="submit" value="Пребарајте" />
+        <input type="submit" value="Пребарај" class=" btn btn-primary" />
     </div>
 }
 <br />
 
-<table class="table">
-    <tr>
-        <th>
+<table class="table" style="outline-style: solid; outline-width: 2px;">
+    <tr style="background-color:#083755; outline-style: solid; outline-width: 2px;">
+        <th style="color:gray">
             Email
         </th>
         <th></th>
@@ -54,7 +55,7 @@
 
 </table>
 <br />
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+Страна @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) oд @Model.PageCount
 
 @Html.PagedListPager(Model,
     page => Url.Action("Index",

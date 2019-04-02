@@ -6,6 +6,7 @@
 {
     @Html.AntiForgeryToken()
     <br />
+    <br />
     @Html.ValidationSummary(true,
     "",
     new { @class = "text-danger" })
@@ -13,15 +14,15 @@
         @Html.ActionLink("Назад",
        "EditUser",
        new { UserName = Model.UserName },
-       new { @class = "btn btn-default" })
-        <input type="submit" value="Додадете улога" class="btn btn-default" />
+       new { @class = "btn btn-primary" })
+        <input type="submit" value="Додадете улога" class = "btn btn-primary" />
         @Html.DropDownList("AddRole")
     </div>
     <br />
 
-    <table class="table">
-        <tr>
-            <th>
+    <table class="table" style="outline-style: solid; outline-width: 2px;">
+        <tr style="background-color:#083755; outline-style: solid; outline-width: 2px;">
+            <th style="color:gray">
                 Тековни улоги:
             </th>
             <th></th>

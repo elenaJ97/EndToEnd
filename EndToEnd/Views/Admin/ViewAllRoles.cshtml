@@ -4,14 +4,16 @@
 }
 
 <br />
+<br />
 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 <p>
-    @Html.ActionLink("Назад", "Index", null, new { @class = "btn btn-default" })
-    @Html.ActionLink("Додади улога", "AddRole", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Назад", "Index", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Додади улога", "AddRole", null, new { @class = "btn btn-primary" })
 </p>
-<table class="table">
-    <tr>
-        <th>
+<br />
+<table class="table" style="outline-style: solid; outline-width: 2px;">
+    <tr style="background-color:#083755; outline-style: solid; outline-width: 2px;">
+        <th style="color:gray">
             Улога
         </th>
         <th></th>

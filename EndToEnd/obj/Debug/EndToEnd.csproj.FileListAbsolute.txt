@@ -511,3 +511,5 @@ C:\Users\Asus\Desktop\Marija\EndToEnd\EndToEnd\obj\Debug\EndToEnd.csproj.CoreCom
 C:\Users\Asus\Desktop\Marija\EndToEnd\EndToEnd\obj\Debug\EndToEnd.csproj.CopyComplete
 C:\Users\Asus\Desktop\Marija\EndToEnd\EndToEnd\obj\Debug\EndToEnd.dll
 C:\Users\Asus\Desktop\Marija\EndToEnd\EndToEnd\obj\Debug\EndToEnd.pdb
+C:\Users\eva.s\source\repos\EndToEnd\EndToEnd\bin\System.Windows.Forms.Ribbon35.dll
+C:\Users\Elena\Desktop\FEIT\EndToEnd\EndToEnd\bin\System.Windows.Forms.Ribbon35.dll

@@ -14,7 +14,7 @@ namespace EndToEnd.Models
         [Display(Name = "Име и презиме")]
         public string UserName { get; set; }
      
-        [RegularExpression(@"\d{1}-\d{4}|\d{2}-\d{4}|\d{3}-\d{4}", ErrorMessage = "Wrong index format.Required XXX-XXXX format")]
+        [RegularExpression(@"\d{1}-\d{4}|\d{2}-\d{4}|\d{3}-\d{4}", ErrorMessage = "Потребно е да го внесете индексот со формат xxx-xxxx!")]
         [Required]
         [Display(Name = "Индекс")]
         public string StudentIndex { get; set; }
@@ -24,7 +24,7 @@ namespace EndToEnd.Models
         [Display(Name = "Просек")]
         public decimal GPA { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Потребно е да се пополни ова поле.")]
         [Display(Name = "Смер")]
         public string Program { get; set; }
 

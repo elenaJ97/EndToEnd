@@ -216,7 +216,7 @@ namespace EndToEnd.Controllers
                                 }
                                 catch
                                 {
-                                    Console.WriteLine("Count not insert.");
+                                        Console.WriteLine("Count not insert.");
                                 }
                             }
                         }
@@ -659,7 +659,7 @@ namespace EndToEnd.Controllers
             SelectRoleListItems.Add(
                 new SelectListItem
                 {
-                    Text = "Select",
+                    Text = "Одбери",
                     Value = "0"
                 });
 

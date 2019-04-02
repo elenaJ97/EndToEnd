@@ -8,9 +8,10 @@
 {
     @Html.AntiForgeryToken()
 
+    <br />
     <div class="form-horizontal">
-        <h4>Додадете нова улога</h4>
-        <hr />
+        <h3>Додадете нова улога</h3>
+        <br/>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.RoleName,
@@ -26,11 +27,11 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Зачувај" class="btn btn-default" />
+                <input type="submit" value="Зачувај" class = "btn btn-primary" />
                 @Html.ActionLink("Назад",
                "ViewAllRoles",
                null,
-               new { @class = "btn btn-default" })
+               new { @class = "btn btn-primary" })
             </div>
         </div>
     </div>
