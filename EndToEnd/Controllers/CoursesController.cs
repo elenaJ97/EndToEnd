@@ -1,4 +1,5 @@
 ﻿using System;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
@@ -143,7 +144,7 @@ namespace EndToEnd.Controllers
             Course course = db.Courses.Find(id);
             if (User.IsInRole("Student"))
             {
-                using (SqlConnection con = new SqlConnection("Server=DESKTOP-2ALKA6L;Database=Data1;Trusted_Connection=true;"))
+                using (SqlConnection con = new SqlConnection("Server=MILOSHEVSKA;Database=Data1;Trusted_Connection=true;"))
 
                 {
                     con.Open();
@@ -168,7 +169,7 @@ namespace EndToEnd.Controllers
             }
             else if (User.IsInRole("Professor"))
             {
-                using (SqlConnection con = new SqlConnection("Server=DESKTOP-2ALKA6L;Database=Data1;Trusted_Connection=true;"))
+                using (SqlConnection con = new SqlConnection("Server=MILOSHEVSKA;Database=Data1;Trusted_Connection=true;"))
 
                 {
                     con.Open();

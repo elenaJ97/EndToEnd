@@ -27,7 +27,7 @@ namespace EndToEnd.Models
         public System.Data.Entity.DbSet<EndToEnd.Models.Course> Courses { get; set; }
         public System.Data.Entity.DbSet<EndToEnd.Models.ProfessorsCourse> ProfessorsCourses { get; set; }
 
-        public DbSet<UserRolesDTO> UserRoles { get; set; }
+
 
 
     }

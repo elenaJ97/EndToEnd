@@ -23,6 +23,8 @@ namespace EndToEnd.Models
         [Required(ErrorMessage = "Изберете улога!")]
         [Display(Name = "Улога")]
         public IEnumerable<UserRolesDTO> Roles { get; set; }
+        [Required]
+        public string StudentID { get; set; }
 
     }
     public class UserRolesDTO

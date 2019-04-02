@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using EndToEnd.Models;
 using PagedList;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 #endregion Includes
 
@@ -20,7 +21,9 @@ namespace EndToEnd.Controllers
     {
         private ApplicationUserManager _userManager;
         private ApplicationRoleManager _roleManager;
-
+        private EndToEndContext db = new EndToEndContext();
+        private ApplicationDbContext db1 = new ApplicationDbContext();
+    
         // Controllers
 
         // GET: /Admin/
@@ -86,6 +89,8 @@ namespace EndToEnd.Controllers
                         col_UserDTO, intPage, intPageSize, intTotalPageCount
                         );
 
+               
+
                 return View(_UserDTOAsIPagedList);
             }
             catch (Exception ex)
@@ -129,21 +134,21 @@ namespace EndToEnd.Controllers
 
                 var Email = paramExpandedUserDTO.Email.Trim();
                 var UserName = paramExpandedUserDTO.Email.Trim();
+                var StudentID = paramExpandedUserDTO.StudentID;
                 var Password = paramExpandedUserDTO.Password.Trim();
+                
 
                 if (Email == "")
                 {
                     throw new Exception("No Email");
                 }
+              
                 if (Password == "")
                 {
                     throw new Exception("No Password");
                 }
 
-                // UserName is LowerCase of the Email
-                UserName = Email.ToLower();
-
-                // Create user
+                
 
                 var objNewAdminUser = new ApplicationUser { UserName = UserName, Email = Email };
                 var AdminUserCreateResult = UserManager.Create(objNewAdminUser, Password);
@@ -158,7 +163,11 @@ namespace EndToEnd.Controllers
                         UserManager.AddToRole(objNewAdminUser.Id, strNewRole);
                         if(strNewRole == "Student")
                         {
-                            using (SqlConnection con = new SqlConnection("Server=DESKTOP-2ALKA6L;Database=Data1;Trusted_Connection=true;"))
+                            if (StudentID == "")
+                            {
+                                throw new Exception("Внеси индекс");
+                            }
+                            using (SqlConnection con = new SqlConnection("Server=MILOSHEVSKA;Database=Data1;Trusted_Connection=true;"))
 
                             {
                                 con.Open();
@@ -169,8 +178,8 @@ namespace EndToEnd.Controllers
                                     {
                                         command.Parameters.Add(new SqlParameter("ID", objNewAdminUser.Id));
                                         command.Parameters.Add(new SqlParameter("UserName", ""));
-                                        command.Parameters.Add(new SqlParameter("StudentIndex", "xxx-xxxx"));
-                                        command.Parameters.Add(new SqlParameter("GPA", ""));
+                                        command.Parameters.Add(new SqlParameter("StudentIndex", StudentID));
+                                        command.Parameters.Add(new SqlParameter("GPA", 5.00));
                                         command.Parameters.Add(new SqlParameter("Program", ""));
                                         command.Parameters.Add(new SqlParameter("Email", objNewAdminUser.Email));
 
@@ -180,12 +189,14 @@ namespace EndToEnd.Controllers
                                 catch
                                 {
                                     Console.WriteLine("Count not insert.");
+                                    MessageBox.Show(" Индексот веќе постои!Обиди се повторно");
+                                    var AdminUserCreateResult1 = UserManager.Delete(objNewAdminUser);
                                 }
                             }
                         }
                        else if (strNewRole == "Professor")
                         {
-                            using (SqlConnection con = new SqlConnection("Server=DESKTOP-2ALKA6L;Database=Data1;Trusted_Connection=true;"))
+                            using (SqlConnection con = new SqlConnection("Server=MILOSHEVSKA;Database=Data1;Trusted_Connection=true;"))
 
                             {
                                 con.Open();
@@ -309,7 +320,9 @@ namespace EndToEnd.Controllers
                 else
                 {
                     DeleteUser(objExpandedUserDTO);
+                   
                 }
+                    
 
                 return Redirect("~/Admin");
             }
@@ -318,6 +331,7 @@ namespace EndToEnd.Controllers
                 ModelState.AddModelError(string.Empty, "Error: " + ex);
                 return View("EditUser", GetUser(UserName));
             }
+          
         }
         #endregion
 

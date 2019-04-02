@@ -5,10 +5,16 @@
 }
 
 <h2>Потврди</h2>
-
-<h3>Сигурен си дека сакаш да го запишеш овој предмет?</h3>
+@if (User.IsInRole("Student"))
+{
+    <h3>Сигурен си дека сакаш да го запишеш овој предмет?</h3>
+}
+@if (User.IsInRole("Professor"))
+{
+    <h3>Дали сте сигурни?</h3>
+}
 <div>
-    <h4>Предмет</h4>
+   
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -45,12 +51,13 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Потврди" class="btn btn-default" /> |
+            @Html.ActionLink("Назад", "Index")
         </div>
     }
 </div>

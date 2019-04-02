@@ -3,7 +3,9 @@
 @{
     ViewBag.Title = "Index";
 }
-<h2>Index</h2>
+<h2>Предмети од факултетската листа</h2>
+<h4>Одберете ги вашите тековни предмети</h4>
+
 
 
 
@@ -18,12 +20,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Semester)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fond)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Credits)
         </th>
@@ -36,17 +33,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Semester)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fond)
-            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.Credits)
             </td>
             <td>
-                @Html.ActionLink("Детали", "Details", new { id = item.Code })
+                @Html.ActionLink("Детали", "Details", new { id = item.Code }) |
 
                 @Html.ActionLink("Додади", "Delete", new { id = item.Code })
             </td>

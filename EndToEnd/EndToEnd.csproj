@@ -211,6 +211,7 @@
     <Compile Include="Models\Professor.cs" />
     <Compile Include="Models\ProfessorsCourse.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\StudentGrade.cs" />
     <Compile Include="Models\UserRolesDTO.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
@@ -406,10 +407,7 @@
     <Content Include="Views\Professors\Details.cshtml" />
     <Content Include="Views\Professors\Edit.cshtml" />
     <Content Include="Views\Professors\Index.cshtml" />
-    <Content Include="Views\Grades\Create.cshtml" />
     <Content Include="Views\Grades\Delete.cshtml" />
-    <Content Include="Views\Grades\Details.cshtml" />
-    <Content Include="Views\Grades\Edit.cshtml" />
     <Content Include="Views\Grades\Index.cshtml" />
     <Content Include="Views\Courses\Create.cshtml" />
     <Content Include="Views\Courses\Delete.cshtml" />
@@ -421,6 +419,12 @@
     <Content Include="Views\ProfessorsCourses\Details.cshtml" />
     <Content Include="Views\ProfessorsCourses\Edit.cshtml" />
     <Content Include="Views\ProfessorsCourses\Index.cshtml" />
+    <Content Include="Views\ProfessorsCourses\Insert.cshtml" />
+    <Content Include="Views\Manage\Details.cshtml" />
+    <Content Include="Views\ProfessorsCourses\Do.cshtml" />
+    <Content Include="Views\Manage\Edit.cshtml" />
+    <Content Include="Views\Manage\Details1.cshtml" />
+    <Content Include="Views\Manage\Edit1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

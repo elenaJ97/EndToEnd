@@ -17,30 +17,40 @@ namespace EndToEnd.Controllers
         private EndToEndContext db = new EndToEndContext();
         private ApplicationDbContext db1 = new ApplicationDbContext();
 
-
         // GET: Students
         public ActionResult Index(string searchString)
         {
-            // var userID = "7e428ac3-2e63-4af7-aa72-7725442e5f6e";
-            /* var query = from Students in db.Students
+            //  var userID = "7e428ac3-2e63-4af7-aa72-7725442e5f6e";
+            var student = new List<Student>(db.Students);
 
-                         join AspNetUserRoles in db1.Users on Students.ID
-                              equals AspNetUserRoles.Id
+            var users = new List<ApplicationUser>(db1.Users);
 
-                         where AspNetUserRoles.. == userID
-                         select new Student
-                         {
-                             UserName = Students.UserName,
-                             StudentIndex = Students.StudentIndex,
-                             Program =  Students.Program,
-                             GPA = Students.GPA,
-                             Email = Students.Email
-                         };
+            var query = from s in student
+                        join u in users on s.ID equals u.Id
+                        select new Student
+                        {
+                            ID=s.ID,
+                            UserName=s.UserName,
+                            StudentIndex=s.StudentIndex,
+                            GPA=s.GPA,
+                            Program=s.Program,
+                            Email=s.Email
+                            
+                        };
+            var delete =(from a in student
+            where !users.Any(s => s.Id == a.ID)
+            select a).ToList();
+            foreach (var item in delete)
+            {
+                db.Students.Remove(item);
+            }
+            db.SaveChanges();
 
-             return View(query.ToList());*/
-            if(searchString!= "") {
-                var students = from m in db.Students
-                               select m;
+
+            if (searchString!= "") {
+                var students = from s in student
+                               join u in users on s.ID equals u.Id
+                               select s;
 
                 if (!String.IsNullOrEmpty(searchString))
                 {
@@ -50,11 +60,10 @@ namespace EndToEnd.Controllers
                 return View(students);
             }
 
-            return View(db.Students.ToList());
-
+            return View(query.ToList());
 
         }
-        
+
 
         // GET: Students/Details/5
         public ActionResult Details(string id)

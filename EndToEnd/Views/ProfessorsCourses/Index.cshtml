@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Листа на тековни предмети</h2>
 
 
 <table class="table">
@@ -23,7 +23,9 @@
         </td>
        
         <td>
-            @Html.ActionLink("Избриши", "Delete", new { id=item.Br })
+            @Html.ActionLink("Внеси оцени", "Insert", new { id = item.Br }) |
+
+            @Html.ActionLink("Избриши", "Delete", new { id = item.Br })
         </td>
     </tr>
 }

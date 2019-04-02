@@ -7,12 +7,16 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using EndToEnd.Models;
+using System.Net;
+using System.Data.Entity;
+using System.Windows.Forms;
 
 namespace EndToEnd.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
+        private EndToEndContext db = new EndToEndContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -321,6 +325,94 @@ namespace EndToEnd.Controllers
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
+        // GET: Professors/Details/5
+        public ActionResult Details1(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Professor professor = db.Professors.Find(id);
+            if (professor == null)
+            {
+                return HttpNotFound();
+            }
+            return View(professor);
+        }
+
+
+        public ActionResult Edit1(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Professor professor = db.Professors.Find(id);
+            if (professor == null)
+            {
+                return HttpNotFound();
+            }
+            return View(professor);
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit1([Bind(Include = "IDProF,Name,Surname,Email")] Professor professor)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(professor).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Details1");
+            }
+            return View(professor);
+        }
+        public ActionResult Details(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Student student = db.Students.Find(id);
+            if (student == null)
+            {
+                return HttpNotFound();
+            }
+          
+            return View(student);
+        }
+        // GET: Students/Edit/5
+        public ActionResult Edit(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Student student = db.Students.Find(id);
+            if (student == null)
+            {
+                return HttpNotFound();
+            }
+            return View(student);
+        }
+
+        // POST: Students/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "ID,UserName,Email,StudentIndex,GPA,Program")] Student student)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(student).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Details");
+            }
+            return View(student);
+        }
+
+       
 
         protected override void Dispose(bool disposing)
         {

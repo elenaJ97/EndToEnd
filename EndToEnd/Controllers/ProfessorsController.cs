@@ -13,14 +13,40 @@ namespace EndToEnd.Controllers
     public class ProfessorsController : Controller
     {
         private EndToEndContext db = new EndToEndContext();
+        private ApplicationDbContext db1 = new ApplicationDbContext();
 
         // GET: Professors
         public ActionResult Index(string searchString)
         {
+            var professor = new List<Professor>(db.Professors);
+
+            var users = new List<ApplicationUser>(db1.Users);
+
+            var query = from p in professor
+                        join u in users on p.IDProF equals u.Id
+                        select new Professor
+                        {
+                           Name=p.Name,
+                           Surname=p.Surname,
+                           IDProF=p.IDProF,
+                           Email=p.Email
+
+                        };
+            var delete = (from a in professor
+                          where !users.Any(s => s.Id == a.IDProF)
+                          select a).ToList();
+            foreach (var item in delete)
+            {
+                db.Professors.Remove(item);
+            }
+            db.SaveChanges();
             if (searchString != "")
             {
-                var professors = from m in db.Professors
-                               select m;
+               
+                var professors = from p in professor
+                                 join u in users on p.IDProF equals u.Id
+
+                                 select p;
 
                 if (!String.IsNullOrEmpty(searchString))
                 {
