@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,34 +18,31 @@ namespace EndToEnd.Controllers
             var professor = new List<Professor>(db.Professors);
             var users = new List<ApplicationUser>(db1.Users);
             var student = new List<Student>(db.Students);
-
-            var delete = (from a in student
-                          where !users.Any(s => s.Id == a.ID)
-                          select a).ToList();
-            foreach (var item in delete)
-            {
-                db.Students.Remove(item);
-            }
-            db.SaveChanges();
-            var delete1 = (from a in professor
-                          where !users.Any(s => s.Id == a.IDProF)
-                          select a).ToList();
-            foreach (var item in delete1)
-            {
-                db.Professors.Remove(item);
-            }
-            db.SaveChanges();
+            var list = (from g in db.Grades
+                        join s in db.Students on g.StudentID equals s.ID
+                        select g.Result);
             if (User.IsInRole("Student"))
             {
-                var user = User.Identity.GetUserId();
-                var average = (from g in db.Grades
-                               join s in db.Students on g.StudentID equals s.ID
-                               select g.Result).Average();
-                var mytab = db.Students.FirstOrDefault(s => s.ID == user);
-                mytab.GPA = average;
-                db.SaveChanges();
+                if (list.Any())
+                {
+                    var user = User.Identity.GetUserId();
+                    var average = (from g in db.Grades
+                                   join s in db.Students on g.StudentID equals user
+                                   select g.Result).DefaultIfEmpty(-1).Average();
+
+                    
+                        var mytab = db.Students.FirstOrDefault(s => s.ID == user);
+                        mytab.GPA = average;
+
+                   
+                        //db.SaveChanges();
+                    
+
+
+
+                }
             }
-            return View();
+                return View();
         }
 
         public ActionResult About()

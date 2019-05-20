@@ -9,7 +9,6 @@
 <br />
 <p>
     @Html.ActionLink("Додадете нов корисник", "Create", null, new { @class = "btn btn-primary" })
-    @Html.ActionLink("Уредете ги улогите", "ViewAllRoles", null, new { @class = "btn btn-primary" })
 </p>
 <br />
 @using (Html.BeginForm("Index", "Admin", FormMethod.Get))
@@ -42,11 +41,10 @@
                 @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
             </td>
             <td>
-                @Html.ActionLink("Уреди", "EditUser", new { UserName = item.UserName }) |
+                @Html.ActionLink("Уреди", "EditUser", new { UserName = item.UserName }) 
                 @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
                 {
-                    @Html.ActionLink("Избриши", "DeleteUser", new { UserName = item.UserName },
-                    new { onclick = "return confirm('Are you sure you wish to delete this user?');" })
+                    
                 }
             </td>
         </tr>

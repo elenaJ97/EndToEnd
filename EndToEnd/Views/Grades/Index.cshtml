@@ -3,32 +3,65 @@
 @{
     ViewBag.Title = "Index";
 }
+<br />
 
-<h2>Index</h2>
+<h4>Положени предмети</h4>
+<br />
+<table class="table" style="outline-style: solid; outline-width: 2px;">
+    <tr style="background-color:#083755; outline-style: solid; outline-width: 2px;">
+        <th style="color:gray">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th style="color:gray">
+            @Html.DisplayNameFor(model => model.Result)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        if (item.Result > 5)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
 
+                    @Html.DisplayFor(modelItem => item.Result)
 
-<table class="table">
-    <tr>
-    <th>
-    @Html.DisplayNameFor(model => model.Name)
-    </th>
-    <th>
-    @Html.DisplayNameFor(model => model.Result)
-      </th>
+                </td>
+            </tr>
+        }
+    }
+</table>
+
+<br />
+<br>
+<h4>Неположени предмети</h4>
+<br />
+
+<table class="table" style="outline-style: solid; outline-width: 2px;">
+    <tr style="background-color:#083755; outline-style: solid; outline-width: 2px;">
+        <th style="color:gray">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
         
+
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Result)
-        </td>
-        
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        if (item.Result <= 5)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+
+
+            </tr>
+        }
+    }
 
 </table>

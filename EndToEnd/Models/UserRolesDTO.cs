@@ -14,7 +14,7 @@ namespace EndToEnd.Models
         [Required]
         [RegularExpression(@"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" + @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$", ErrorMessage = "Wrong email format.")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Потребно е да се пополни ова поле.")]
         [Display(Name = "Лозинка")]
         public string Password { get; set; }
         public DateTime? LockoutEndDateUtc { get; set; }
@@ -23,7 +23,9 @@ namespace EndToEnd.Models
         [Required(ErrorMessage = "Изберете улога!")]
         [Display(Name = "Улога")]
         public IEnumerable<UserRolesDTO> Roles { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Потребно е да се пополни ова поле.")]
+        [Display(Name = "Досие бр.")]
+
         public string StudentID { get; set; }
 
     }

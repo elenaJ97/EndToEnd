@@ -43,13 +43,8 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Зачувај" class = "btn btn-primary" />
-                @Html.ActionLink("Променете ја улогата", "EditRoles",
-               new { UserName = Model.UserName },
-               new { @class = "btn btn-primary" })
-                @Html.ActionLink("Назад",
-               "Index",
-               null,
-               new { @class = "btn btn-primary" })
+                
+                @Html.ActionLink("Назад","Index", null,new { @class = "btn btn-primary" })
             </div>
         </div>
     </div>

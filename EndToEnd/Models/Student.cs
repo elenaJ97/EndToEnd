@@ -10,7 +10,7 @@ namespace EndToEnd.Models
     {
         public string  ID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Потребно е да се пополни ова поле.")]
         [Display(Name = "Име и презиме")]
         public string UserName { get; set; }
      

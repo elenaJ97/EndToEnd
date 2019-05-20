@@ -55,9 +55,9 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Потврди" class="btn btn-default" /> |
-            @Html.ActionLink("Назад", "Index")
+        <div class="form-actions no-color" >
+            <input type="submit" value="Потврди" class="btn btn-primary" /> 
+            @Html.ActionLink("Назад", "Index", null, new {@class = "btn btn-primary" })
         </div>
     }
 </div>

@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using EndToEnd.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace EndToEnd.Controllers
 {
@@ -16,11 +17,13 @@ namespace EndToEnd.Controllers
     {
         private EndToEndContext db = new EndToEndContext();
         private ApplicationDbContext db1 = new ApplicationDbContext();
+        private ApplicationUserManager _userManager;
+
+
 
         // GET: Students
         public ActionResult Index(string searchString)
         {
-            //  var userID = "7e428ac3-2e63-4af7-aa72-7725442e5f6e";
             var student = new List<Student>(db.Students);
 
             var users = new List<ApplicationUser>(db1.Users);
@@ -37,16 +40,7 @@ namespace EndToEnd.Controllers
                             Email=s.Email
                             
                         };
-            var delete =(from a in student
-            where !users.Any(s => s.Id == a.ID)
-            select a).ToList();
-            foreach (var item in delete)
-            {
-                db.Students.Remove(item);
-            }
-            db.SaveChanges();
-
-
+           
             if (searchString!= "") {
                 var students = from s in student
                                join u in users on s.ID equals u.Id
@@ -148,14 +142,47 @@ namespace EndToEnd.Controllers
             }
             return View(student);
         }
-
+        #region public ApplicationUserManager UserManager
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ??
+                    HttpContext.GetOwinContext()
+                    .GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+        #endregion
         // POST: Students/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
+            var grade = new List<Grade>(db.Grades);
+
             Student student = db.Students.Find(id);
+            var grades = (from g in grade
+                         where g.StudentID==id
+                         select g).ToList();
+            foreach (var item in grades)
+            {
+                db.Grades.Remove(item);
+            }
+            db.SaveChanges();
             db.Students.Remove(student);
+            ApplicationUser user = UserManager.FindById(id);
+            if (user == null)
+            {
+                throw new Exception("Could not find the User");
+            }
+
+            UserManager.RemoveFromRoles(user.Id, UserManager.GetRoles(user.Id).ToArray());
+            UserManager.Update(user);
+            UserManager.Delete(user);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

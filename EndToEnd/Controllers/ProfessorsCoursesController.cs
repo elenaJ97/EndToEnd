@@ -33,31 +33,15 @@ namespace EndToEnd.Controllers
                             Br = PC.Br,
 
                         };
+
             var professor = new List<Professor>(db.Professors);
             var users = new List<ApplicationUser>(db1.Users);
             var student = new List<Student>(db.Students);
-
-            var delete = (from a in student
-                          where !users.Any(s => s.Id == a.ID)
-                          select a).ToList();
-            foreach (var item in delete)
-            {
-                db.Students.Remove(item);
-            }
-            db.SaveChanges();
-            var delete1 = (from a in professor
-                           where !users.Any(s => s.Id == a.IDProF)
-                           select a).ToList();
-            foreach (var item in delete1)
-            {
-                db.Professors.Remove(item);
-            }
-            db.SaveChanges();
             return View(query.ToList());
         }
 
 
-        
+        [HttpGet]
         public ActionResult Insert(int? id)
         {
             if (id == null)
@@ -69,7 +53,6 @@ namespace EndToEnd.Controllers
             {
                 return HttpNotFound();
             }
-
             var result = from s in db.Students
                          join g in db.Grades on s.ID equals g.StudentID
                          where g.Code == professorsCourse.Code
@@ -79,15 +62,17 @@ namespace EndToEnd.Controllers
                              StudentIndex = s.StudentIndex,
                              Result = g.Result ,
                              StudentID=s.ID,
-                             Br= professorsCourse.Br,
+                             Br=professorsCourse.Br,
                              PrBr = g.PrBr,
                              Program = s.Program,
                              Code =g.Code
                          };
             
-
             return View(result.ToList());
         }
+       
+
+        /*
         public ActionResult Create()
         {
             return View();
@@ -133,7 +118,7 @@ namespace EndToEnd.Controllers
         }
 
         
-       
+       */
         [HttpGet]
         public ActionResult Do(int? id)
         {
@@ -152,8 +137,7 @@ namespace EndToEnd.Controllers
             var result = from s in db.Students
                          join g in db.Grades on s.ID equals g.StudentID
                          where g.PrBr == grade.PrBr
-                         select new StudentGrade
-                         {
+                         select new StudentGrade {
                              UserName = s.UserName,
                              StudentIndex = s.StudentIndex,
                              Result = g.Result,
@@ -163,16 +147,15 @@ namespace EndToEnd.Controllers
                              Code = g.Code
                          };
 
-           
+
             return View(result.First());
            
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Do([Bind(Include = "StudentID,Result,Code,PrBr")] StudentGrade grade)
+        public ActionResult Do([Bind(Include = "StudentID,Result,Code,PrBr,Br")] StudentGrade grade)
         {
-
 
             if (ModelState.IsValid)
                 {
@@ -180,13 +163,13 @@ namespace EndToEnd.Controllers
                 mytab.Result = grade.Result;
                 db.SaveChanges();
                   
-                    return RedirectToAction("Insert");
+                    return RedirectToAction("Index");
                 }
                 return View(grade);
             
 
         }
-
+       
         // GET: ProfessorsCourses/Delete/5
         public ActionResult Delete(int? id)
         {

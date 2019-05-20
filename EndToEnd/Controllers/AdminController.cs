@@ -1,16 +1,16 @@
 ﻿#region Includes
+using EndToEnd.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.AspNet.Identity.EntityFramework;
-using EndToEnd.Models;
-using PagedList;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 #endregion Includes
@@ -95,7 +95,7 @@ namespace EndToEnd.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "Error: " + ex);
+                ModelState.AddModelError(string.Empty, "Грешка: " + ex);
                 List<ExpandedUserDTO> col_UserDTO = new List<ExpandedUserDTO>();
 
                 return View(col_UserDTO.ToPagedList(1, 25));
@@ -229,14 +229,14 @@ namespace EndToEnd.Controllers
                 {
                     ViewBag.Roles = GetAllRolesAsSelectList();
                      ModelState.AddModelError(string.Empty,
-                        "Error: Failed to create the user. Check password requirements.");
+                        "Грешка: Неможе да се додаде нов корисник. Лозинката треба да соддржи минимум една голема буква, минимум еден број и специјален знак");
                     return View(paramExpandedUserDTO);
                 }
             }
             catch (Exception ex)
             {
                 ViewBag.Roles = GetAllRolesAsSelectList();
-                ModelState.AddModelError(string.Empty, "Error: " + ex);
+                ModelState.AddModelError(string.Empty, "Грешка: " + ex);
                 return View("Create");
             }
         }
@@ -285,7 +285,7 @@ namespace EndToEnd.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "Error: " + ex);
+                ModelState.AddModelError(string.Empty, "Грешка: " + ex);
                 return View("EditUser", GetUser(paramExpandedUserDTO.UserName));
             }
         }
@@ -306,7 +306,7 @@ namespace EndToEnd.Controllers
                 if (UserName.ToLower() == this.User.Identity.Name.ToLower())
                 {
                     ModelState.AddModelError(
-                        string.Empty, "Error: Cannot delete the current user");
+                        string.Empty, "Грешка: Не може да се избрише овој корисник");
 
                     return View("EditUser");
                 }
@@ -328,7 +328,7 @@ namespace EndToEnd.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "Error: " + ex);
+                ModelState.AddModelError(string.Empty, "Грешка: " + ex);
                 return View("EditUser", GetUser(UserName));
             }
           
@@ -383,21 +383,19 @@ namespace EndToEnd.Controllers
                 {
                     // Go get the User
                     ApplicationUser user = UserManager.FindByName(UserName);
-
                     // Put user in role
                     UserManager.AddToRole(user.Id, strNewRole);
                 }
 
                 ViewBag.AddRole = new SelectList(RolesUserIsNotIn(UserName));
 
-                UserAndRolesDTO objUserAndRolesDTO =
-                    GetUserAndRoles(UserName);
+                UserAndRolesDTO objUserAndRolesDTO =GetUserAndRoles(UserName);
 
                 return View(objUserAndRolesDTO);
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "Error: " + ex);
+                ModelState.AddModelError(string.Empty, "Грешка: " + ex);
                 return View("EditRoles");
             }
         }
@@ -429,7 +427,7 @@ namespace EndToEnd.Controllers
                     this.User.Identity.Name.ToLower() && RoleName == "Administrator")
                 {
                     ModelState.AddModelError(string.Empty,
-                        "Error: Cannot delete Administrator Role for the current user");
+                        "Грешка: Не може да се промени администраторска улога на овој корисник.");
                 }
 
                 // Go get the User
@@ -444,7 +442,7 @@ namespace EndToEnd.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "Error: " + ex);
+                ModelState.AddModelError(string.Empty, "Грешка: " + ex);
 
                 ViewBag.AddRole = new SelectList(RolesUserIsNotIn(UserName));
 
@@ -527,7 +525,7 @@ namespace EndToEnd.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "Error: " + ex);
+                ModelState.AddModelError(string.Empty, "Грешка: " + ex);
                 return View("AddRole");
             }
         }
@@ -591,7 +589,7 @@ namespace EndToEnd.Controllers
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "Error: " + ex);
+                ModelState.AddModelError(string.Empty, "Грешка: " + ex);
 
                 var roleManager =
                     new RoleManager<IdentityRole>(
@@ -748,8 +746,7 @@ namespace EndToEnd.Controllers
         #region private void DeleteUser(ExpandedUserDTO paramExpandedUserDTO)
         private void DeleteUser(ExpandedUserDTO paramExpandedUserDTO)
         {
-            ApplicationUser user =
-                UserManager.FindByName(paramExpandedUserDTO.UserName);
+            ApplicationUser user = UserManager.FindByName(paramExpandedUserDTO.UserName);
 
             // If we could not find the user, throw an exception
             if (user == null)

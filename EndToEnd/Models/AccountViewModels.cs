@@ -5,7 +5,8 @@ namespace EndToEnd.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required]
+      
+        [Required(ErrorMessage = "Потребно е да се пополни ова поле.")]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
@@ -28,7 +29,7 @@ namespace EndToEnd.Models
         [Required]
         public string Provider { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Потребно е да се пополни ова поле.")]
         [Display(Name = "Code")]
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
@@ -48,17 +49,17 @@ namespace EndToEnd.Models
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Потребно е да се пополни ова поле.")]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Потребно е да се пополни ова поле.")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Запомни ме")]
         public bool RememberMe { get; set; }
     }
 
@@ -84,13 +85,12 @@ namespace EndToEnd.Models
 
     public class ResetPasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Потребно е да се пополни ова поле.")]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-
-        [Required]
+        [Required(ErrorMessage = "Потребно е да се пополни ова поле.")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]

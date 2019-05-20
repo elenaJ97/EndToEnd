@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using EndToEnd.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace EndToEnd.Controllers
 {
@@ -14,6 +16,8 @@ namespace EndToEnd.Controllers
     {
         private EndToEndContext db = new EndToEndContext();
         private ApplicationDbContext db1 = new ApplicationDbContext();
+        private ApplicationUserManager _userManager;
+
 
         // GET: Professors
         public ActionResult Index(string searchString)
@@ -32,13 +36,7 @@ namespace EndToEnd.Controllers
                            Email=p.Email
 
                         };
-            var delete = (from a in professor
-                          where !users.Any(s => s.Id == a.IDProF)
-                          select a).ToList();
-            foreach (var item in delete)
-            {
-                db.Professors.Remove(item);
-            }
+          
             db.SaveChanges();
             if (searchString != "")
             {
@@ -72,7 +70,7 @@ namespace EndToEnd.Controllers
             }
             return View(professor);
         }
-
+        
         // GET: Professors/Create
         public ActionResult Create()
         {
@@ -95,7 +93,7 @@ namespace EndToEnd.Controllers
 
             return View(professor);
         }
-
+        
         // GET: Professors/Edit/5
         public ActionResult Edit(string id)
         {
@@ -141,14 +139,47 @@ namespace EndToEnd.Controllers
             }
             return View(professor);
         }
-
+        #region public ApplicationUserManager UserManager
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ??
+                    HttpContext.GetOwinContext()
+                    .GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+        #endregion
         // POST: Professors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
             Professor professor = db.Professors.Find(id);
+            var course = new List<ProfessorsCourse>(db.ProfessorsCourses);
+            var courses = (from g in course
+                          where g.IDProF == id
+                          select g).ToList();
+            foreach (var item in courses)
+            {
+                db.ProfessorsCourses.Remove(item);
+            }
+            db.SaveChanges();
             db.Professors.Remove(professor);
+            ApplicationUser user = UserManager.FindById(id);
+            if (user == null)
+            {
+                throw new Exception("Could not find the User");
+            }
+
+            UserManager.RemoveFromRoles(user.Id, UserManager.GetRoles(user.Id).ToArray());
+            UserManager.Update(user);
+            UserManager.Delete(user);
+            db.SaveChanges();
             db.SaveChanges();
             return RedirectToAction("Index");
         }

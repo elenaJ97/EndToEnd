@@ -3,18 +3,20 @@
 @{
     ViewBag.Title = "Index";
 }
+ <br />
+<br />
 
 
-    
-<table class="table">
-    <tr>
-        <th>
+
+<table class="table" style="outline-style: solid; outline-width: 2px;">
+    <tr style="background-color:#083755; outline-style: solid; outline-width: 2px;">
+        <th style="color:gray">
             @Html.DisplayNameFor(model => model.UserName)
         </th>
-        <th>
+        <th style="color:gray">
             @Html.DisplayNameFor(model => model.StudentIndex)
         </th>
-        <th>
+        <th style="color:gray">
             @Html.DisplayNameFor(model => model.Result)
         </th>
         <th></th>
@@ -31,14 +33,17 @@
                 @Html.DisplayFor(modelItem => item.StudentIndex)
             </td>
             <td>
+                @if (item.Result > 5)
+                {
                 @Html.DisplayFor(modelItem => item.Result)
+                }
             </td>
 
             <td>
-                @Html.ActionLink("Внеси оценa", "Do", new { id = item.PrBr }) |
+                @Html.ActionLink("Внеси оценa", "Do", new { id = item.PrBr }) 
 
             </td>
         </tr>
-        
+
     }
 </table>

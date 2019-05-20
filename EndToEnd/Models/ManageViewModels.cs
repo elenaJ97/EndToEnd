@@ -28,7 +28,7 @@ namespace EndToEnd.Models
     public class SetPasswordViewModel
     {
         [Required]
-        [StringLength(100, ErrorMessage = "Новата озинка треба да има најмалку {2} карактери.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Новата лозинка треба да има најмалку {2} карактери.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Нова лозинка")]
         public string NewPassword { get; set; }

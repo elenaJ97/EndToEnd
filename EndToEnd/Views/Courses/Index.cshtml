@@ -22,8 +22,6 @@
         <th style="color:gray">
             @Html.DisplayNameFor(model => model.Name)
         </th>
-
-        <th>
         <th style="color:gray">
             @Html.DisplayNameFor(model => model.Semester)
         </th>
@@ -33,34 +31,43 @@
         <th style="color:gray">
             @Html.DisplayNameFor(model => model.Credits)
         </th>
-        <th></th>
+        <th style="color:gray">
+        </th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Credits)
-            </td>
-            <td>
-                @Html.ActionLink("Детали", "Details", new { id = item.Code })
-                @if (User.IsInRole("Professor"))
-                {
-                    <span>|</span>
-                    @Html.ActionLink("Додади", "Delete", new { id = item.Code })
-                }
-                @if (User.IsInRole("Student"))
-                {
-                    <span>|</span>
-                    @Html.ActionLink("Додади", "Delete", new { id = item.Code })
-                }
+        <td>
+            @Html.DisplayFor(modelItem => item.Semester)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fond)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Credits)
+        </td>
+        <th>
+            @Html.ActionLink("Детали", "Details", new { id = item.Code })
+            @if (User.IsInRole("Professor"))
+            {
+                <span>|</span>
+                @Html.ActionLink("Додади", "Delete", new { id = item.Code })
+            }
+            @if (User.IsInRole("Student"))
+            {
+                <span>|</span>
+                @Html.ActionLink("Додади", "Delete", new { id = item.Code })
+            }
 
-            </td>
-        </tr>
+        </th>
+    </tr>
+       
     }
+
 
 </table>

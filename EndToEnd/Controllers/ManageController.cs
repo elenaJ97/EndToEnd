@@ -78,7 +78,7 @@ namespace EndToEnd.Controllers
             };
             return View(model);
         }
-
+        /*
         //
         // POST: /Manage/RemoveLogin
         [HttpPost]
@@ -133,7 +133,7 @@ namespace EndToEnd.Controllers
             }
             return RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
         }
-
+        /*
         //
         // POST: /Manage/EnableTwoFactorAuthentication
         [HttpPost]
@@ -216,7 +216,7 @@ namespace EndToEnd.Controllers
             }
             return RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
         }
-
+        */
         //
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
@@ -242,7 +242,7 @@ namespace EndToEnd.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                return RedirectToAction("Details/"+user.Id);
             }
             AddErrors(result);
             return View(model);
@@ -279,7 +279,7 @@ namespace EndToEnd.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
+        /*
         //
         // GET: /Manage/ManageLogins
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
@@ -302,7 +302,7 @@ namespace EndToEnd.Controllers
                 OtherLogins = otherLogins
             });
         }
-
+        
         //
         // POST: /Manage/LinkLogin
         [HttpPost]
@@ -324,7 +324,7 @@ namespace EndToEnd.Controllers
             }
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
-        }
+        }*/
         // GET: Professors/Details/5
         public ActionResult Details1(string id)
         {
@@ -363,7 +363,7 @@ namespace EndToEnd.Controllers
             {
                 db.Entry(professor).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Details1");
+                return RedirectToAction("Details1/"+professor.IDProF);
             }
             return View(professor);
         }
@@ -374,6 +374,7 @@ namespace EndToEnd.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Student student = db.Students.Find(id);
+
             if (student == null)
             {
                 return HttpNotFound();
@@ -407,7 +408,7 @@ namespace EndToEnd.Controllers
             {
                 db.Entry(student).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Details");
+                return RedirectToAction("Details/"+student.ID);
             }
             return View(student);
         }

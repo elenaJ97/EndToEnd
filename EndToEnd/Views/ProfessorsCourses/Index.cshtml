@@ -5,29 +5,38 @@
 }
 
 <h3>Предмети кои ги предавате</h3>
+<br />
+<br />
+<br />
 
 
-<table class="table">
-    <tr>
-        <th>
+<table class="table" style="outline-style: solid; outline-width: 2px;">
+    <tr style="background-color:#083755; outline-style: solid; outline-width: 2px;">
+        <th style="color:gray">
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        
-        <th></th>
+        <th style="color:gray">
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th style="color:gray">
+        </th>
     </tr>
-
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+            {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-       
+        <td>
+            @Html.DisplayFor(modelItem => item.Code)
+        </td>
+
         <td>
             @Html.ActionLink("Внеси оцени", "Insert", new { id = item.Br }) |
 
             @Html.ActionLink("Избриши", "Delete", new { id = item.Br })
         </td>
     </tr>
-}
+            }
 
-</table>
+        </table>

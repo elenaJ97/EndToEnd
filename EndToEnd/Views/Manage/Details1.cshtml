@@ -4,10 +4,10 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
 <div>
-    <h4>Professor</h4>
+    <h2>Уреди профил</h2>
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -38,7 +38,7 @@
 </div>
 <p>
 <p>
-    @Html.ActionLink("Измени", "Edit1", new { id = Model.IDProF }) |
-    @Html.ActionLink("Смени пасворд", "ChangePassword") |
+    @Html.ActionLink("Измени", "Edit1", new { id = Model.IDProF }, new { @class = "btn btn-primary" }) 
+    @Html.ActionLink("Смени лозинка", "ChangePassword", null, new { @class = "btn btn-primary" }) 
 </p>
 

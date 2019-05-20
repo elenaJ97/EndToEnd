@@ -15,8 +15,6 @@
        "EditUser",
        new { UserName = Model.UserName },
        new { @class = "btn btn-primary" })
-        <input type="submit" value="Додадете улога" class = "btn btn-primary" />
-        @Html.DropDownList("AddRole")
     </div>
     <br />
 
@@ -30,26 +28,27 @@
 
         @foreach (var item in Model.colUserRoleDTO)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RoleName)
-                </td>
-                <td>
-                    @if (!((Model.UserName.ToLower() ==
-                        this.User.Identity.Name.ToLower()) &&
-                        item.RoleName == "Administrator") &&
-                        item.RoleName != "No Roles Found")
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoleName)
+            </td>
+           
+            <td>
+                @if (!((Model.UserName.ToLower() ==
+                    this.User.Identity.Name.ToLower()) &&
+                    item.RoleName == "Administrator") &&
+                    item.RoleName != "No Roles Found")
+                {
+                    @Html.ActionLink("Избриши", "DeleteRole",
+                   new { UserName = item.UserName, RoleName = item.RoleName },
+                    new
                     {
-                        @Html.ActionLink("Избриши", "DeleteRole",
-                       new { UserName = item.UserName, RoleName = item.RoleName },
-                        new
-                        {
-                            onclick =
-                        "return confirm('Are you sure you wish to delete this role?');"
-                        })
-                    }
-                </td>
-            </tr>
+                        onclick =
+                    "return confirm('Are you sure you wish to delete this role?');"
+                    })
+                }
+            </td>
+        </tr>
         }
     </table>
 }
